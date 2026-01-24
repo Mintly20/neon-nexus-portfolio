@@ -24,11 +24,11 @@ const projects = [
     color: 'purple',
   },
   {
-    title: 'Security Audit Reports',
-    description: 'Collection of smart contract audit reports identifying critical vulnerabilities in DeFi protocols.',
+    title: 'CodeHawks First Flights',
+    description: 'Participated in competitive smart contract audits including MultiSig Timelock, Token-0x, and more. Awarded 1 High and 3 Medium severity findings.',
     icon: Lock,
-    tech: ['Slither', 'Mythril', 'Manual Review'],
-    github: 'https://github.com',
+    tech: ['Slither', 'Mythril', 'Manual Review', 'CodeHawks'],
+    github: 'https://codehawks.com',
     color: 'blue',
   },
   {
