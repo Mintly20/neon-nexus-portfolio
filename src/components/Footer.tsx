@@ -2,9 +2,9 @@ import { motion } from 'framer-motion';
 import { Github, Linkedin, Mail, Heart } from 'lucide-react';
 
 const socialLinks = [
-  { icon: Github, href: 'https://github.com/pushkaran', label: 'GitHub' },
+  { icon: Github, href: 'https://github.com/pushkaran23', label: 'GitHub' },
   { icon: Linkedin, href: 'https://linkedin.com/in/pushkaran', label: 'LinkedIn' },
-  { icon: Mail, href: 'mailto:pushkaran@email.com', label: 'Email' },
+  { icon: Mail, href: 'mailto:pushprakash23@gmail.com', label: 'Email' },
 ];
 
 const Footer = () => {

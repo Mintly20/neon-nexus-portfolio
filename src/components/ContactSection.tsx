@@ -8,9 +8,9 @@ import { Textarea } from './ui/textarea';
 import { toast } from 'sonner';
 
 const socialLinks = [
-  { icon: Mail, label: 'Email', href: 'mailto:pushkaran@email.com', value: 'pushkaran@email.com' },
+  { icon: Mail, label: 'Email', href: 'mailto:pushprakash23@gmail.com', value: 'pushprakash23@gmail.com' },
   { icon: Linkedin, label: 'LinkedIn', href: 'https://linkedin.com/in/pushkaran', value: 'linkedin.com/in/pushkaran' },
-  { icon: Github, label: 'GitHub', href: 'https://github.com/pushkaran', value: 'github.com/pushkaran' },
+  { icon: Github, label: 'GitHub', href: 'https://github.com/pushkaran23', value: 'github.com/pushkaran23' },
 ];
 
 const ContactSection = () => {
