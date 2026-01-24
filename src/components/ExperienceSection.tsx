@@ -16,9 +16,9 @@ const experiences = [
   {
     type: 'hackathon',
     title: 'ETHGlobal Hackathon',
-    company: 'Winner - DeFi Track',
+    company: 'Participant - DeFi Track',
     period: '2025',
-    description: 'Built a cross-chain lending protocol with novel liquidation mechanism. Won first place in the DeFi category.',
+    description: 'Participated in building a cross-chain lending protocol with novel liquidation mechanism in the DeFi category.',
     icon: Trophy,
     color: 'purple',
   },
