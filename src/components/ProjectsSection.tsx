@@ -15,11 +15,11 @@ const projects = [
     color: 'cyan',
   },
   {
-    title: 'NFT Marketplace',
-    description: 'Full-featured NFT marketplace with lazy minting, royalty enforcement, and auction functionality.',
-    icon: Image,
-    tech: ['Solidity', 'Hardhat', 'Next.js', 'Ethers.js'],
-    github: 'https://github.com',
+    title: 'ERC20 Staking Contract',
+    description: 'A staking platform allowing users to stake ERC20 tokens, earn rewards, and manage their staked positions with flexible withdrawal.',
+    icon: Coins,
+    tech: ['Solidity', 'Foundry', 'React', 'Ethers.js'],
+    github: 'https://github.com/pushkaran23',
     demo: 'https://demo.com',
     color: 'purple',
   },
@@ -154,7 +154,7 @@ const ProjectsSection = () => {
           className="text-center mt-10"
         >
           <Button variant="neon" asChild>
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+            <a href="https://github.com/pushkaran23" target="_blank" rel="noopener noreferrer">
               <Github className="mr-2 h-4 w-4" />
               View All Projects on GitHub
             </a>

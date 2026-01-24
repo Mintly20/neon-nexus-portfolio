@@ -8,7 +8,7 @@ const GitHubSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
   
-  const githubUsername = 'pushkaran';
+  const githubUsername = 'pushkaran23';
 
   return (
     <section id="github" className="py-24 relative" ref={ref}>

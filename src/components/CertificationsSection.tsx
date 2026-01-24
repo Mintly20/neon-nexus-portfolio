@@ -7,25 +7,25 @@ const certifications = [
   {
     title: 'Certified Blockchain Developer',
     issuer: 'Blockchain Council',
-    date: '2024',
+    date: '2025',
     link: '#',
   },
   {
     title: 'Smart Contract Security',
     issuer: 'Consensys Academy',
-    date: '2024',
+    date: '2025',
     link: '#',
   },
   {
     title: 'Foundry Fundamentals',
     issuer: 'Cyfrin Updraft',
-    date: '2024',
+    date: '2025',
     link: '#',
   },
   {
     title: 'DeFi Security',
     issuer: 'Immunefi',
-    date: '2023',
+    date: '2025',
     link: '#',
   },
 ];
