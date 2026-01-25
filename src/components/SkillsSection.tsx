@@ -1,55 +1,80 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
+import SkillBar from './SkillBar';
 
 const skillCategories = [
   {
     title: 'Blockchain & Smart Contracts',
-    color: 'cyan',
-    skills: ['Solidity', 'Foundry', 'Hardhat', 'EVM', 'OpenZeppelin', 'Chainlink'],
+    color: 'cyan' as const,
+    skills: [
+      { name: 'Solidity', level: 90 },
+      { name: 'Foundry', level: 85 },
+      { name: 'Hardhat', level: 80 },
+      { name: 'OpenZeppelin', level: 85 },
+    ],
+    tags: ['EVM', 'Chainlink', 'ERC Standards'],
   },
   {
     title: 'Web3 Frontend',
-    color: 'purple',
-    skills: ['React', 'Next.js', 'Ethers.js', 'Web3.js', 'Wagmi', 'Viem', 'RainbowKit'],
+    color: 'purple' as const,
+    skills: [
+      { name: 'React / Next.js', level: 88 },
+      { name: 'Ethers.js / Viem', level: 85 },
+      { name: 'Wagmi', level: 82 },
+      { name: 'RainbowKit', level: 78 },
+    ],
+    tags: ['TypeScript', 'TailwindCSS', 'Web3.js'],
   },
   {
     title: 'Security & Auditing',
-    color: 'blue',
-    skills: ['Smart Contract Auditing', 'Vulnerability Analysis', 'Slither', 'Mythril', 'Fuzzing'],
+    color: 'blue' as const,
+    skills: [
+      { name: 'Manual Review', level: 85 },
+      { name: 'Slither', level: 80 },
+      { name: 'Mythril', level: 75 },
+      { name: 'Fuzzing', level: 78 },
+    ],
+    tags: ['Vulnerability Analysis', 'Formal Verification'],
   },
   {
     title: 'Domains',
-    color: 'pink',
-    skills: ['DeFi Protocols', 'NFT Standards', 'DAOs', 'Token Economics', 'MEV', 'L2 Solutions'],
+    color: 'pink' as const,
+    skills: [
+      { name: 'DeFi Protocols', level: 88 },
+      { name: 'NFT Standards', level: 82 },
+      { name: 'DAO Governance', level: 75 },
+      { name: 'Token Economics', level: 80 },
+    ],
+    tags: ['MEV', 'L2 Solutions', 'Cross-chain'],
   },
 ];
 
 const getColorClasses = (color: string) => {
-  const colors: Record<string, { bg: string; border: string; text: string; glow: string }> = {
+  const colors: Record<string, { border: string; text: string; glow: string; bg: string }> = {
     cyan: {
-      bg: 'bg-neon-cyan/10',
-      border: 'border-neon-cyan/30',
+      border: 'border-neon-cyan/30 hover:border-neon-cyan/60',
       text: 'text-neon-cyan',
-      glow: 'group-hover:shadow-[0_0_30px_hsl(var(--neon-cyan)/0.3)]',
+      glow: 'hover:shadow-[0_0_40px_hsl(var(--neon-cyan)/0.2)]',
+      bg: 'bg-neon-cyan/5',
     },
     purple: {
-      bg: 'bg-neon-purple/10',
-      border: 'border-neon-purple/30',
+      border: 'border-neon-purple/30 hover:border-neon-purple/60',
       text: 'text-neon-purple',
-      glow: 'group-hover:shadow-[0_0_30px_hsl(var(--neon-purple)/0.3)]',
+      glow: 'hover:shadow-[0_0_40px_hsl(var(--neon-purple)/0.2)]',
+      bg: 'bg-neon-purple/5',
     },
     blue: {
-      bg: 'bg-neon-blue/10',
-      border: 'border-neon-blue/30',
+      border: 'border-neon-blue/30 hover:border-neon-blue/60',
       text: 'text-neon-blue',
-      glow: 'group-hover:shadow-[0_0_30px_hsl(var(--neon-blue)/0.3)]',
+      glow: 'hover:shadow-[0_0_40px_hsl(var(--neon-blue)/0.2)]',
+      bg: 'bg-neon-blue/5',
     },
     pink: {
-      bg: 'bg-neon-pink/10',
-      border: 'border-neon-pink/30',
+      border: 'border-neon-pink/30 hover:border-neon-pink/60',
       text: 'text-neon-pink',
-      glow: 'group-hover:shadow-[0_0_30px_hsl(var(--neon-pink)/0.3)]',
+      glow: 'hover:shadow-[0_0_40px_hsl(var(--neon-pink)/0.2)]',
+      bg: 'bg-neon-pink/5',
     },
   };
   return colors[color] || colors.cyan;
@@ -62,10 +87,10 @@ const SkillsSection = () => {
   return (
     <section id="skills" className="py-24 relative" ref={ref}>
       {/* Background accent */}
-      <div className="absolute inset-0 opacity-30">
+      <div className="absolute inset-0 overflow-hidden">
         <div 
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full blur-3xl"
-          style={{ background: 'radial-gradient(circle, hsl(var(--neon-cyan) / 0.1), transparent 70%)' }}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full blur-3xl opacity-20"
+          style={{ background: 'radial-gradient(circle, hsl(var(--neon-cyan) / 0.15), transparent 60%)' }}
         />
       </div>
 
@@ -76,11 +101,19 @@ const SkillsSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
+          <motion.span
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
+            transition={{ delay: 0.2 }}
+            className="inline-block px-4 py-1.5 rounded-full bg-neon-cyan/10 border border-neon-cyan/30 text-neon-cyan text-sm font-mono mb-4"
+          >
+            {'<'} Technical Stack {'>'}
+          </motion.span>
           <h2 className="section-heading">
-            Technical <span className="text-gradient">Skills</span>
+            Skills & <span className="text-gradient">Expertise</span>
           </h2>
           <p className="section-subheading">
-            Tools and technologies I use to build the decentralized web
+            Building with cutting-edge blockchain technologies
           </p>
         </motion.div>
 
@@ -94,23 +127,43 @@ const SkillsSection = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: categoryIndex * 0.1 }}
-                className={`group glass-card p-6 transition-all duration-500 ${colorClasses.glow}`}
+                className={`group relative rounded-xl border ${colorClasses.border} ${colorClasses.bg} ${colorClasses.glow} p-6 transition-all duration-500 backdrop-blur-sm`}
               >
-                <h3 className={`text-lg font-semibold mb-4 ${colorClasses.text}`}>
+                {/* Gradient line at top */}
+                <div 
+                  className={`absolute top-0 left-6 right-6 h-px opacity-50`}
+                  style={{
+                    background: `linear-gradient(90deg, transparent, hsl(var(--neon-${category.color})), transparent)`,
+                  }}
+                />
+
+                <h3 className={`text-lg font-semibold mb-6 flex items-center gap-2 ${colorClasses.text}`}>
+                  <span className="w-2 h-2 rounded-full bg-current animate-pulse" />
                   {category.title}
                 </h3>
-                <div className="flex flex-wrap gap-2">
+                
+                {/* Skill Bars */}
+                <div className="space-y-4 mb-6">
                   {category.skills.map((skill, skillIndex) => (
-                    <motion.span
-                      key={skill}
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                      transition={{ duration: 0.3, delay: categoryIndex * 0.1 + skillIndex * 0.05 }}
-                      whileHover={{ scale: 1.05, y: -2 }}
-                      className={`px-3 py-1.5 text-sm rounded-full ${colorClasses.bg} border ${colorClasses.border} ${colorClasses.text} transition-all duration-300 cursor-default`}
+                    <SkillBar
+                      key={skill.name}
+                      name={skill.name}
+                      level={skill.level}
+                      color={category.color}
+                      delay={categoryIndex * 0.1 + skillIndex * 0.1}
+                    />
+                  ))}
+                </div>
+
+                {/* Additional tags */}
+                <div className="flex flex-wrap gap-2 pt-4 border-t border-border/30">
+                  {category.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className={`px-2 py-0.5 text-xs rounded font-mono ${colorClasses.text} opacity-60`}
                     >
-                      {skill}
-                    </motion.span>
+                      #{tag.toLowerCase().replace(/\s/g, '')}
+                    </span>
                   ))}
                 </div>
               </motion.div>
