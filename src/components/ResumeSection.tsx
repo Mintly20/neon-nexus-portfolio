@@ -42,7 +42,7 @@ const ResumeSection = () => {
                 className="pulse-glow"
                 asChild
               >
-                <a href="/resume.pdf" download>
+                <a href="https://jnbprozkciguaqlmsdgq.supabase.co/storage/v1/object/public/prod.ephemeral.public/jVpkDADDt23Cb3Tia2T592.pdf?" download>
                   <Download className="mr-2 h-5 w-5" />
                   Download Resume
                 </a>
