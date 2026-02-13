@@ -42,7 +42,7 @@ const ResumeSection = () => {
                 className="pulse-glow"
                 asChild
               >
-                <a href="./Push Resume.pdf" download>
+                <a href="Push Resume.pdf" download>
                   <Download className="mr-2 h-5 w-5" />
                   Download Resume
                 </a>
